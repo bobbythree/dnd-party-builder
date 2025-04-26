@@ -1,4 +1,4 @@
-class Weapon {
+export class Weapon {
   name: string;
   damage: string;
 
