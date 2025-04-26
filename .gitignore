@@ -1,0 +1,73 @@
+# Node.js and Dependencies
+# Ignore the Node.js modules directory
+node_modules/
+# Ignore the lock file versions for npm, yarn, and pnpm
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build Output
+# Vite's default build output directory
+dist/
+# Other potential build or output directories
+build/
+out/
+
+# TypeScript
+# TypeScript build info file
+*.tsbuildinfo
+
+# Vite
+# Vite cache directory
+.vite/
+
+# Environment Variables
+# Local environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editors and IDEs
+# Common editor and IDE specific files and directories
+.vscode/
+.idea/
+
+# LazyVim specific ignores (from LazyVim's own .gitignore, adapt as needed)
+# These might overlap with project specifics, prioritize project needs.
+# If LazyVim creates these within your project, keep them.
+/.repro
+/.tests
+/debug
+/doc/tags
+# foo.* # Example of a specific file pattern LazyVim might ignore, keep if relevant
+# tt.* # Example of another specific file pattern LazyVim might ignore, keep if relevant
+
+# Operating System Files (Linux)
+# Thumbnail caches
+.thumbnails/
+# Leftover files from merges or conflicts
+*.orig
+*.rej
+# Various temporary or backup files
+*~
+.#*
+*.swp
+.DS_Store # macOS (often sneaks in)
+
+# Dependency caches
+.npm/
+.yarn-cache/
+.pnpm-store/
+
+# Test coverage
+coverage/
+
+#icale output files
+.eslintcache
