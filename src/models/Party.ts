@@ -1,4 +1,4 @@
-import { Character } from './Character.ts'
+import { Character } from './characters/Character.ts'
 
 class Party {
   name: string;
