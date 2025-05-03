@@ -1,21 +1,17 @@
-interface DropdownLabel {
-  label: string
+interface DropdownProps {
+  label: string;
+  options: string[];
 }
 
-export default function DropdownInput({ label }: DropdownLabel) {
-
+export default function DropdownInput({ label, options }: DropdownProps) {
 
   return (
-    <>
-      <label className="select">
-        <span className="label">{label}</span>
-        <select>
-          <option>Fighter</option>
-          <option>Druid</option>
-          <option>Bard</option>
-        </select>
-      </label>
-    </>
+    <select className="select" defaultValue={label}>
+      <option disabled={true}>{label}</option>
+      {options.map((option, i) => (
+        <option key={i}>{option}</option>
+      ))}
+    </select>
   )
 }
 
