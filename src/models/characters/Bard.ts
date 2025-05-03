@@ -2,15 +2,17 @@ import { Character } from './Character.ts'
 
 class Bard extends Character {
   instrument: string;
+  spells: string[];
 
   constructor(
     name: string,
     level: number,
     race: string,
-    dnd_class: string,
-    instrument: string
+    instrument: string,
+    spells: string[]
   ) {
-    super(name, level, race, dnd_class)
+    super(name, level, race, "Bard")
     this.instrument = instrument;
+    this.spells = spells;
   }
 }

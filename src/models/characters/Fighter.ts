@@ -1,5 +1,5 @@
 import { Character } from './Character.ts'
-import { Weapon } from './Weapon.ts'
+import { Weapon } from '../weapons/Weapon.ts'
 
 class Fighter extends Character {
   weapon: Weapon;
@@ -8,10 +8,9 @@ class Fighter extends Character {
     name: string,
     level: number,
     race: string,
-    dnd_class: string,
     weapon: Weapon
   ) {
-    super(name, level, race, dnd_class)
+    super(name, level, race, "Fighter")
     this.weapon = weapon;
   }
 }

@@ -8,11 +8,10 @@ class Druid extends Character {
     name: string,
     level: number,
     race: string,
-    dnd_class: string,
     spells: string[],
     weapon: string
   ) {
-    super(name, level, race, dnd_class)
+    super(name, level, race, "Druid")
     this.spells = spells;
     this.weapon = weapon;
   }
