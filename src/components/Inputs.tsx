@@ -1,11 +1,11 @@
-import TextInput from "./TextInput";
+import DropdownInput from "./DropdownInput";
 
 export default function Inputs() {
 
   return (
-    <>
-      <TextInput label="Party Name" />
-    </>
+    <div className="flex flex-col">
+      <DropdownInput label="Select Class" />
+    </div>
   )
 }
 
