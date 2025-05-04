@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import PartyNameForm from './PartyNameForm';
+import PartyNameButton from "./PartyNameButton";
 
 interface PartyFormData {
   partyName: string;
@@ -26,10 +27,23 @@ export default function Welcome() {
         DnD Party Builder
       </h1>
       {submitForm ?
-        <p className="text-center mt-[20%] text-3xl">Your party's name is: {formData?.partyName}</p>
+        <>
+          <p className="text-center mt-[20%] text-3xl">Your party's name is: {formData?.partyName}</p>
+          <div className="flex justify-center pt-8">
+            <PartyNameButton
+              btnText="Go with this name"
+              clickHandler={() => alert('clicked yes')}
+            />
+            <PartyNameButton
+              btnText="Pick a new name"
+              clickHandler={() => alert('clicked no')}
+            />
+          </div>
+        </>
         : //else
         //render form component and pass handler function
         <PartyNameForm onSubmitPartyName={handlePartyNameSubmit} />
+
       }
     </>
   )
