@@ -11,6 +11,7 @@ export default function Welcome() {
 
   const [formData, setFormData] = useState<PartyFormData | null>(null);
 
+  // this function gets passed to child (PartyNameForm.tsx)
   const handlePartyNameSubmit = (name: string) => {
     const submittedData: PartyFormData = {
       partyName: name,
@@ -27,6 +28,7 @@ export default function Welcome() {
       {submitForm ?
         <p className="text-center mt-[20%] text-3xl">Your party's name is: {formData?.partyName}</p>
         : //else
+        //render form component and pass handler function
         <PartyNameForm onSubmitPartyName={handlePartyNameSubmit} />
       }
     </>
