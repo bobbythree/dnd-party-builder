@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import PartyNameForm from './PartyNameForm';
+import PartyNameForm from "./PartyNameForm";
 import PartyNameButton from "./PartyNameButton";
 
 interface PartyFormData {
@@ -36,7 +36,7 @@ export default function Welcome() {
             />
             <PartyNameButton
               btnText="Pick a new name"
-              clickHandler={() => alert('clicked no')}
+              clickHandler={() => setSubmitForm(false)} //go back to form
             />
           </div>
         </>
