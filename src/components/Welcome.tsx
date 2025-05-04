@@ -9,7 +9,7 @@ export default function Welcome() {
 
   return (
     <>
-      <h1 className="text-center text-6xl p-15 bg-neutral">
+      <h1 className="text-center text-6xl p-15 bg-primary/20">
         DnD Party Builder
       </h1>
       {submitForm ?
@@ -21,9 +21,9 @@ export default function Welcome() {
             <input
               type="text"
               placeholder="Enter a Party name"
-              className="input input-xl rounded-md"
+              className="input input-xl rounded-md input-bordered border-primary/35"
             />
-            <button type="submit" className="btn btn-neutral btn-xl rounded-md mx-1,">Submit</button>
+            <button type="submit" className="btn bg-primary/20 btn-xl rounded-md mx-1,">Submit</button>
           </form>
         </>
       }
