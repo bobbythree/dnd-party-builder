@@ -23,11 +23,11 @@ export default function PartyNameForm({ onSubmitPartyName }: PartyNameFormProps)
         <input
           type="text"
           placeholder="Enter a Party name"
-          className="input input-xl rounded-md input-bordered border-primary/35"
+          className="input input-xl input-bordered border-primary/35 pl-8"
           onChange={handleInputChange}
           value={partyName} // Make the input a controlled component
         />
-        <button type="submit" className="btn bg-primary/20 btn-xl rounded-md mx-1,">Submit</button>
+        <button type="submit" className="btn bg-primary/20 btn-xl mx-1,">Submit</button>
       </form>
     </>
   )
