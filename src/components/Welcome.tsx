@@ -28,7 +28,13 @@ export default function Welcome() {
         <>
           <p
             className=
-            "text-center mt-[20%] text-3xl">Your party's name is: <span className="bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text">{formData?.partyName}</span></p>
+            "text-center mt-[25%] text-3xl">
+            Your party's name is:&nbsp;
+            <span className=
+              "bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text">
+              {formData?.partyName}
+            </span>
+          </p>
           <div className="flex justify-center pt-8">
             <PartyNameButton
               btnText="Go with this name"
