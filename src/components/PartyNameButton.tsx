@@ -7,7 +7,7 @@ export default function PartyNameButton({ btnText, clickHandler }: PartyNameButt
   return (
     <>
       <button
-        className="btn btn-neutral m-5"
+        className="btn bg-primary/20 m-5"
         onClick={clickHandler}
       > {btnText}
       </button>
