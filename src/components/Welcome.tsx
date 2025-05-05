@@ -1,7 +1,8 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import PartyNameForm from "./PartyNameForm";
 import PartyNameButton from "./PartyNameButton";
+
 
 interface PartyFormData {
   partyName: string;
@@ -9,8 +10,8 @@ interface PartyFormData {
 
 export default function Welcome() {
   const [submitForm, setSubmitForm] = useState<boolean>(false);
-
   const [formData, setFormData] = useState<PartyFormData | null>(null);
+  const navigate = useNavigate();
 
   // this function gets passed to child (PartyNameForm.tsx)
   const handlePartyNameSubmit = (name: string) => {
@@ -23,16 +24,13 @@ export default function Welcome() {
 
   return (
     <>
-      <h1 className="text-center text-6xl p-15 bg-primary/20">
-        DnD Party Builder
-      </h1>
       {submitForm ?
         <>
           <p className="text-center mt-[20%] text-3xl">Your party's name is: {formData?.partyName}</p>
           <div className="flex justify-center pt-8">
             <PartyNameButton
               btnText="Go with this name"
-              clickHandler={() => alert('clicked yes')}
+              clickHandler={() => navigate('/add-character')}
             />
             <PartyNameButton
               btnText="Pick a new name"

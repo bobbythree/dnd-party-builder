@@ -1,6 +1,6 @@
 interface PartyNameButtonProps {
   btnText: string;
-  clickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  clickHandler?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function PartyNameButton({ btnText, clickHandler }: PartyNameButtonProps) {
