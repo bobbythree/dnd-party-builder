@@ -18,7 +18,7 @@ export default function PartyNameForm({ onSubmitPartyName }: PartyNameFormProps)
   }
   return (
     <>
-      <h3 className="text-center mt-[25%] text-3xl">Choose a name for your Party</h3>
+      <h3 className="text-center mt-[30vh] text-3xl">Choose a name for your Party</h3>
       <form className="text-center pt-10" onSubmit={handleSubmit}>
         <input
           type="text"
