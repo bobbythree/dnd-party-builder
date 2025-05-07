@@ -22,6 +22,10 @@ export default function Welcome() {
     setSubmitForm(true);
   }
 
+  const handleConfirmPartyName = () => {
+    navigate('./add-character', { state: { partyName: formData?.partyName } })
+  }
+
   return (
     <>
       {submitForm ?
@@ -38,7 +42,7 @@ export default function Welcome() {
           <div className="flex justify-center pt-8">
             <PartyNameButton
               btnText="Go with this name"
-              clickHandler={() => navigate('/add-character')}
+              clickHandler={handleConfirmPartyName}
             />
             <PartyNameButton
               btnText="Pick a new name"
