@@ -1,8 +1,12 @@
 import Inputs from "../components/Inputs"
+import PartyNameHeading from "../components/PartyNameHeading"
 
 export default function AddCharacterPage() {
   return (
-    <Inputs />
+    <>
+      <PartyNameHeading />
+      <Inputs />
+    </>
   )
 }
 
