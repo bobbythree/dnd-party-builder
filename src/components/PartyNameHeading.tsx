@@ -12,7 +12,7 @@ export default function PartyNameHeading() {
   return (
     <h1 className="
       bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text
-      text-center p-10 text-5xl
+      text-center p-10 text-5xl mt-[22vh]
       ">{partyName || 'Your Party'}
     </h1>
   )
