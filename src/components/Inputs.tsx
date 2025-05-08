@@ -7,7 +7,7 @@ export default function Inputs() {
   return (
     <div className="flex flex-col items-center justify-center">
       <h3 className="pb-5">Add a Character</h3>
-      <form>
+      <form className="flex flex-col items-center">
         <TextInput label="Name" placeholder="Choose a name" />
         <DropdownInput
           label="Choose Race"
@@ -33,6 +33,7 @@ export default function Inputs() {
             ]
           }
         />
+        <button className="btn bg-primary/20 mt-5 w-[50%]" type="submit">Add to Party</button>
       </form>
     </div>
   )
