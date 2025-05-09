@@ -12,17 +12,17 @@ export default function DropdownInput({ label, options, name, value, onChange }:
 
   return (
     <>
-      <label htmlFor={name} className="m-3" >{label}:</label>
+      <label htmlFor={name} className="m-1" >{label}:</label>
       <select
-        className="select"
+        className="select mb-3"
         id={name}
         name={name}
         value={value}
         onChange={onChange}
       >
 
-        {options.map((option, i) => (
-          <option key={i}>{option}</option>
+        {options.map((optionValue) => (
+          <option key={optionValue} value={optionValue}>{optionValue}</option>
         ))}
       </select>
     </>

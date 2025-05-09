@@ -19,7 +19,7 @@ export default function Inputs() {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev = ({
+    setFormData(prev => ({
       ...prev,
       [name]: value,
     }));
@@ -33,7 +33,6 @@ export default function Inputs() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h3 className="pb-5">Add a Character</h3>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <TextInput
           label="Name"
@@ -43,21 +42,21 @@ export default function Inputs() {
           onChange={handleChange}
         />
         <DropdownInput
-          label="Choose Race"
+          label="Race"
           options={['Human', 'Elf', 'Half-Elf']}
           name="race"
-          value={formData.name}
+          value={formData.race}
           onChange={handleChange}
         />
         <DropdownInput
-          label="Choose Class"
+          label="Class"
           options={['Fighter', 'Druid', 'Bard']}
           name="class"
-          value={formData.name}
+          value={formData.race}
           onChange={handleChange}
         />
         <DropdownInput
-          label="Choose Alignment"
+          label="Alignment"
           options={
             [
               'Lawful Good',
@@ -72,10 +71,10 @@ export default function Inputs() {
             ]
           }
           name="alignment"
-          value={formData.name}
+          value={formData.race}
           onChange={handleChange}
         />
-        <button className="btn bg-primary/20 mt-5 w-[50%]" type="submit">Add to Party</button>
+        <button className="btn bg-primary/20 mt-5 w-[60%]" type="submit">Add to Party</button>
       </form>
     </div>
   )
