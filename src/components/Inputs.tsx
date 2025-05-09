@@ -33,7 +33,7 @@ export default function Inputs() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <form onSubmit={handleSubmit} className="flex flex-col items-center">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center w-md">
         <TextInput
           label="Name"
           placeholder="Choose a name"
@@ -74,7 +74,7 @@ export default function Inputs() {
           value={formData.race}
           onChange={handleChange}
         />
-        <button className="btn bg-primary/20 mt-5 w-[60%]" type="submit">Add to Party</button>
+        <button className="btn bg-primary/20 mt-5" type="submit">Add to Party</button>
       </form>
     </div>
   )

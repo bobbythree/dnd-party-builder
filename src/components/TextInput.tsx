@@ -13,8 +13,8 @@ export default function TextInput({ label, placeholder, name, value, onChange }:
     <>
       <label htmlFor={name} className="m-1">{label}:</label>
       <input
+        className="input mb-3 w-[60%]"
         name={name}
-        className="input mb-3"
         type="text"
         placeholder={placeholder}
         id={name}

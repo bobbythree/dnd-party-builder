@@ -14,7 +14,7 @@ export default function DropdownInput({ label, options, name, value, onChange }:
     <>
       <label htmlFor={name} className="m-1" >{label}:</label>
       <select
-        className="select mb-3"
+        className="select mb-3 w-[60%]"
         id={name}
         name={name}
         value={value}
