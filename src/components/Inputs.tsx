@@ -45,13 +45,19 @@ export default function Inputs() {
         <DropdownInput
           label="Choose Race"
           options={['Human', 'Elf', 'Half-Elf']}
+          name="race"
+          value={formData.name}
+          onChange={handleChange}
         />
         <DropdownInput
           label="Choose Class"
           options={['Fighter', 'Druid', 'Bard']}
+          name="class"
+          value={formData.name}
+          onChange={handleChange}
         />
         <DropdownInput
-          label="Choose Alignent"
+          label="Choose Alignment"
           options={
             [
               'Lawful Good',
@@ -65,6 +71,9 @@ export default function Inputs() {
               'Chaotic Evil',
             ]
           }
+          name="alignment"
+          value={formData.name}
+          onChange={handleChange}
         />
         <button className="btn bg-primary/20 mt-5 w-[50%]" type="submit">Add to Party</button>
       </form>

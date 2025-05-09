@@ -11,19 +11,22 @@ interface DropdownProps {
 export default function DropdownInput({ label, options, name, value, onChange }: DropdownProps) {
 
   return (
-    <select
-      className="select"
-      id={name}
-      defaultValue={label}
-      name={name}
-      value={value}
-      onChange={onChange}
-    >
-      <option disabled={true}>{label}</option>
-      {options.map((option, i) => (
-        <option key={i}>{option}</option>
-      ))}
-    </select>
+    <>
+      <label htmlFor={name} className="m-3" >{label}:</label>
+      <select
+        className="select"
+        id={name}
+        name={name}
+        value={value}
+        onChange={onChange}
+      >
+
+        {options.map((option, i) => (
+          <option key={i}>{option}</option>
+        ))}
+      </select>
+    </>
+
   )
 }
 
