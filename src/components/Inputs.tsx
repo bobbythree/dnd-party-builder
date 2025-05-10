@@ -28,7 +28,12 @@ export default function Inputs() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData);
-
+    setFormData({
+      name: '',
+      race: '',
+      characterClass: '',
+      alignment: '',
+    })
   }
 
   return (
