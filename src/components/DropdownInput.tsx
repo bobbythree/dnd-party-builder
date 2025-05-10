@@ -1,7 +1,6 @@
 import { ChangeEvent } from "react";
 
 interface DropdownProps {
-  label: string;
   options: string[];
   name: string;
   value: string;
@@ -9,13 +8,13 @@ interface DropdownProps {
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export default function DropdownInput({ label, options, name, value, placeholder, onChange }: DropdownProps) {
+export default function DropdownInput({ options, name, value, placeholder, onChange }: DropdownProps) {
+  const textColorClass = value === "" ? 'text-white/40' : 'text-current';
 
   return (
     <div className="flex flex-col items-center w-full gap-3  mb-3">
-      <label htmlFor={name} className="self-start pl-27">{label}:</label>
       <select
-        className="select mb-3 w-[60%]"
+        className={`select mb-3 w-[60%] ${textColorClass}`}
         id={name}
         name={name}
         value={value}
