@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import DropdownInput from "./DropdownInput";
 import TextInput from "./TextInput";
+import { TestClass } from "../models/characters/TestClass";
 
 interface CharacterFormData {
   name: string;
@@ -27,13 +28,16 @@ export default function Inputs() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
     setFormData({
       name: '',
       race: '',
       characterClass: '',
       alignment: '',
-    })
+    });
+    //test character
+    const testCharacter = new TestClass(formData.name, formData.race, formData.characterClass, formData.alignment);
+    console.log(testCharacter);
+
   }
 
   return (
