@@ -22,7 +22,7 @@ export default function DropdownInput({ label, options, name, value, placeholder
         onChange={onChange}
         required
       >
-        <option value="" disabled selected hidden>{placeholder}</option>
+        <option value="" disabled hidden>{placeholder}</option>
 
         {options.map((optionValue) => (
           <option key={optionValue} value={optionValue}>{optionValue}</option>
