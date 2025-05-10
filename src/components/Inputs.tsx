@@ -46,6 +46,7 @@ export default function Inputs() {
           options={['Human', 'Elf', 'Half-Elf']}
           name="race"
           value={formData.race}
+          placeholder="Choose a Race"
           onChange={handleChange}
         />
         <DropdownInput
@@ -53,6 +54,7 @@ export default function Inputs() {
           options={['Fighter', 'Druid', 'Bard']}
           name="characterClass"
           value={formData.characterClass}
+          placeholder="Choose a Class"
           onChange={handleChange}
         />
         <DropdownInput
@@ -72,6 +74,7 @@ export default function Inputs() {
           }
           name="alignment"
           value={formData.alignment}
+          placeholder="Choose an Alignment"
           onChange={handleChange}
         />
         <button className="btn bg-primary/20 mt-5 w-[30%]" type="submit">Add to Party</button>

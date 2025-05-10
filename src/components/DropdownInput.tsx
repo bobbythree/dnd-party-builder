@@ -5,10 +5,11 @@ interface DropdownProps {
   options: string[];
   name: string;
   value: string;
+  placeholder: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export default function DropdownInput({ label, options, name, value, onChange }: DropdownProps) {
+export default function DropdownInput({ label, options, name, value, placeholder, onChange }: DropdownProps) {
 
   return (
     <div className="flex flex-col items-center w-full gap-3  mb-3">
@@ -19,7 +20,9 @@ export default function DropdownInput({ label, options, name, value, onChange }:
         name={name}
         value={value}
         onChange={onChange}
+        required
       >
+        <option value="" disabled selected hidden>{placeholder}</option>
 
         {options.map((optionValue) => (
           <option key={optionValue} value={optionValue}>{optionValue}</option>

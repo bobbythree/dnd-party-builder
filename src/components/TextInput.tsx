@@ -20,6 +20,7 @@ export default function TextInput({ label, placeholder, name, value, onChange }:
         id={name}
         value={value}
         onChange={onChange}
+        required
       />
     </div>
   )
