@@ -32,9 +32,8 @@ export default function Inputs() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h3 className="pb-5">Add a Character</h3>
-      <form onSubmit={handleSubmit} className="flex flex-col items-center w-lg">
+    <div className="flex flex-col items-center">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-lg">
         <TextInput
           label="Name"
           placeholder="Choose a name"
@@ -43,21 +42,21 @@ export default function Inputs() {
           onChange={handleChange}
         />
         <DropdownInput
-          label="Choose Race"
+          label="Race"
           options={['Human', 'Elf', 'Half-Elf']}
           name="race"
           value={formData.race}
           onChange={handleChange}
         />
         <DropdownInput
-          label="Choose Class"
+          label="Class"
           options={['Fighter', 'Druid', 'Bard']}
           name="characterClass"
           value={formData.characterClass}
           onChange={handleChange}
         />
         <DropdownInput
-          label="Choose Alignment"
+          label="Alignment"
           options={
             [
               'Lawful Good',
@@ -75,7 +74,7 @@ export default function Inputs() {
           value={formData.alignment}
           onChange={handleChange}
         />
-        <button className="btn bg-primary/20 mt-5 w-[50%]" type="submit">Add to Party</button>
+        <button className="btn bg-primary/20 mt-5 w-[30%]" type="submit">Add to Party</button>
       </form>
     </div>
   )

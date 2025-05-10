@@ -16,7 +16,7 @@ export default function PartyNameHeading() {
         text-center pb-5 text-5xl mt-[22vh]
         ">{partyName || 'Your Party'}
       </h1>
-      <h3 className="text-center pb-10 text-lg text-primary/60">Add a Character to the Party</h3>
+      <h3 className="text-center pb-15 text-xl text-primary/60">Add a Character to the Party</h3>
     </>
   )
 }

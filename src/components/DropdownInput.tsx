@@ -11,8 +11,8 @@ interface DropdownProps {
 export default function DropdownInput({ label, options, name, value, onChange }: DropdownProps) {
 
   return (
-    <>
-      <label htmlFor={name} className="m-1" >{label}:</label>
+    <div className="flex flex-col items-center w-full gap-3  mb-3">
+      <label htmlFor={name} className="self-start pl-27">{label}:</label>
       <select
         className="select mb-3 w-[60%]"
         id={name}
@@ -25,7 +25,7 @@ export default function DropdownInput({ label, options, name, value, onChange }:
           <option key={optionValue} value={optionValue}>{optionValue}</option>
         ))}
       </select>
-    </>
+    </div>
 
   )
 }
