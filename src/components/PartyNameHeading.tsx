@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom"
 
+// define state types passed from Welcome.tsx
 interface LocationState {
   partyName: string;
 }

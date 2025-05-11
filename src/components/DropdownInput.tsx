@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 
+// define prop types
 interface DropdownProps {
   options: string[];
   name: string;
@@ -9,6 +10,7 @@ interface DropdownProps {
 }
 
 export default function DropdownInput({ options, name, value, placeholder, onChange }: DropdownProps) {
+  // conditional text color for placeholder
   const textColorClass = value === "" ? 'text-white/40' : 'text-current';
 
   return (

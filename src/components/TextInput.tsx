@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 
+// define prop types 
 interface TextInputProps {
   placeholder?: string;
   name: string;
