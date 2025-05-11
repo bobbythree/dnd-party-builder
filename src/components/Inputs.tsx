@@ -4,6 +4,7 @@ import DropdownInput from "./DropdownInput";
 import TextInput from "./TextInput";
 import { Character } from "../models/characters/Character";
 
+// define prop types passed to this component
 interface CharacterFormData {
   name: string;
   race: string;
@@ -12,9 +13,12 @@ interface CharacterFormData {
   level: string;
 }
 
+//component
 export default function Inputs() {
+  // instantiate useNavigate hook
   const navigate = useNavigate();
 
+  // state variable for formData with default values
   const [formData, setFormData] = useState<CharacterFormData>({
     name: '',
     race: '',
@@ -23,6 +27,7 @@ export default function Inputs() {
     level: '',
   });
 
+  // set formData with user input
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -31,6 +36,7 @@ export default function Inputs() {
     }));
   }
 
+  // handle form submit and reset form
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormData({
@@ -40,9 +46,9 @@ export default function Inputs() {
       alignment: '',
       level: '',
     });
-    //test character
+    // instantiate Character class with formData
     const addedCharacter = new Character(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
-    console.log(addedCharacter);
+    // navigate to myparty page and pass state
     navigate('/my-party', { state: addedCharacter });
   }
 
