@@ -4,25 +4,32 @@ import PartyNameForm from "./PartyNameForm";
 import PartyNameButton from "./PartyNameButton";
 
 
+// define types for formData
 interface PartyFormData {
   partyName: string;
 }
 
 export default function Welcome() {
+  // state variables
   const [submitForm, setSubmitForm] = useState<boolean>(false);
   const [formData, setFormData] = useState<PartyFormData | null>(null);
+
+  // instantiate useNavigate hook
   const navigate = useNavigate();
 
-  // this function gets passed to child (PartyNameForm.tsx)
+  // this handler func gets passed to child (PartyNameForm.tsx) when form is submitted
   const handlePartyNameSubmit = (name: string) => {
     const submittedData: PartyFormData = {
       partyName: name,
     }
+    // set formData with user input
     setFormData(submittedData);
     setSubmitForm(true);
   }
 
+  //handler for when user confirms party name
   const handleConfirmPartyName = () => {
+    // navigate to add-character page and pass state
     navigate('./add-character', { state: { partyName: formData?.partyName } })
   }
 
