@@ -1,16 +1,20 @@
 import { useState, FormEvent, ChangeEvent } from "react"
 
+//define prop types
 interface PartyNameFormProps {
   onSubmitPartyName: (name: string) => void;
 }
 
 export default function PartyNameForm({ onSubmitPartyName }: PartyNameFormProps) {
-
+  // state variables
   const [partyName, setPartyName] = useState<string>('');
+
+  // set party name with user input
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPartyName(e.target.value);
   }
 
+  // form submit handler
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Call the function passed from the parent, sending the partyName up

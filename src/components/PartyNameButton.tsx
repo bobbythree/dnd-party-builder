@@ -1,3 +1,9 @@
+{/*
+  this component defines the buttons that appear after user submits a party name.
+  buttons are for confirming the name or going back to pick a different name.
+*/}
+
+// define prop types
 interface PartyNameButtonProps {
   btnText: string;
   clickHandler?: (event: React.MouseEvent<HTMLButtonElement>) => void;
