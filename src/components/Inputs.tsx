@@ -1,7 +1,8 @@
 import { useState, ChangeEvent, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import DropdownInput from "./DropdownInput";
 import TextInput from "./TextInput";
-import { TestClass } from "../models/characters/TestClass";
+import { Character } from "../models/characters/Character";
 
 interface CharacterFormData {
   name: string;
@@ -12,6 +13,8 @@ interface CharacterFormData {
 }
 
 export default function Inputs() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<CharacterFormData>({
     name: '',
     race: '',
@@ -38,9 +41,9 @@ export default function Inputs() {
       level: '',
     });
     //test character
-    const testCharacter = new TestClass(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
-    console.log(testCharacter);
-
+    const addedCharacter = new Character(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
+    console.log(addedCharacter);
+    navigate('/my-party', { state: addedCharacter });
   }
 
   return (
