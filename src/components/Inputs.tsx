@@ -44,27 +44,27 @@ export default function Inputs() {
     <div className="flex flex-col items-center">
       <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-lg">
         <TextInput
-          label="Character"
-          placeholder="Choose a name"
           name="name"
+          placeholder="Choose a name"
           value={formData.name}
           onChange={handleChange}
         />
         <DropdownInput
-          options={['Human', 'Elf', 'Half-Elf']}
           name="race"
+          options={['Human', 'Elf', 'Half-Elf']}
           value={formData.race}
           placeholder="Choose a Race"
           onChange={handleChange}
         />
         <DropdownInput
-          options={['Fighter', 'Druid', 'Bard']}
           name="characterClass"
+          options={['Fighter', 'Druid', 'Bard']}
           value={formData.characterClass}
           placeholder="Choose a Class"
           onChange={handleChange}
         />
         <DropdownInput
+          name="alignment"
           options={
             [
               'Lawful Good',
@@ -78,7 +78,6 @@ export default function Inputs() {
               'Chaotic Evil',
             ]
           }
-          name="alignment"
           value={formData.alignment}
           placeholder="Choose an Alignment"
           onChange={handleChange}
