@@ -8,6 +8,7 @@ interface CharacterFormData {
   race: string;
   characterClass: string;
   alignment: string;
+  level: string;
 }
 
 export default function Inputs() {
@@ -16,6 +17,7 @@ export default function Inputs() {
     race: '',
     characterClass: '',
     alignment: '',
+    level: '',
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -33,9 +35,10 @@ export default function Inputs() {
       race: '',
       characterClass: '',
       alignment: '',
+      level: '',
     });
     //test character
-    const testCharacter = new TestClass(formData.name, formData.race, formData.characterClass, formData.alignment);
+    const testCharacter = new TestClass(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
     console.log(testCharacter);
 
   }
@@ -45,7 +48,7 @@ export default function Inputs() {
       <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-lg">
         <TextInput
           name="name"
-          placeholder="Choose a name"
+          placeholder="Character name"
           value={formData.name}
           onChange={handleChange}
         />
@@ -53,14 +56,14 @@ export default function Inputs() {
           name="race"
           options={['Human', 'Elf', 'Half-Elf']}
           value={formData.race}
-          placeholder="Choose a Race"
+          placeholder="Character Race"
           onChange={handleChange}
         />
         <DropdownInput
           name="characterClass"
           options={['Fighter', 'Druid', 'Bard']}
           value={formData.characterClass}
-          placeholder="Choose a Class"
+          placeholder="Character Class"
           onChange={handleChange}
         />
         <DropdownInput
@@ -79,7 +82,14 @@ export default function Inputs() {
             ]
           }
           value={formData.alignment}
-          placeholder="Choose an Alignment"
+          placeholder="Character Alignment"
+          onChange={handleChange}
+        />
+        <DropdownInput
+          name="level"
+          options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
+          value={formData.level}
+          placeholder="Character Level"
           onChange={handleChange}
         />
         <button className="btn bg-primary/20 mt-5 w-[30%]" type="submit">Add to Party</button>

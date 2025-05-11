@@ -6,12 +6,13 @@ class Druid extends Character {
 
   constructor(
     name: string,
-    level: number,
+    level: string,
     race: string,
+    alignment: string,
     spells: string[],
     weapon: string
   ) {
-    super(name, level, race, "Druid")
+    super(name, level, race, alignment, "Druid")
     this.spells = spells;
     this.weapon = weapon;
   }

@@ -6,11 +6,12 @@ class Fighter extends Character {
 
   constructor(
     name: string,
-    level: number,
+    level: string,
     race: string,
+    alignment: string,
     weapon: Weapon
   ) {
-    super(name, level, race, "Fighter")
+    super(name, level, race, alignment, "Fighter")
     this.weapon = weapon;
   }
 }

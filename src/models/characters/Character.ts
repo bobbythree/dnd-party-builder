@@ -1,18 +1,21 @@
 export class Character {
   name: string;
-  level: number;
   race: string;
-  dnd_class: string;
+  characterClass: string;
+  alignment: string;
+  level: string;
 
   constructor(
     name: string,
-    level: number,
     race: string,
-    dnd_class: string,
+    characterClass: string,
+    alignment: string,
+    level: string,
   ) {
     this.name = name;
-    this.level = level;
     this.race = race;
-    this.dnd_class = dnd_class;
+    this.characterClass = characterClass;
+    this.alignment = alignment;
+    this.level = level;
   }
 }

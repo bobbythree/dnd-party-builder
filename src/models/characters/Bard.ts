@@ -6,12 +6,13 @@ class Bard extends Character {
 
   constructor(
     name: string,
-    level: number,
+    level: string,
     race: string,
+    alignment: string,
     instrument: string,
     spells: string[]
   ) {
-    super(name, level, race, "Bard")
+    super(name, level, race, alignment, "Bard")
     this.instrument = instrument;
     this.spells = spells;
   }
