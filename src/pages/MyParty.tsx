@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom"
+import PartyNameHeading from "../components/PartyNameHeading";
 
 interface CharacterFormData {
   name: string;
@@ -14,7 +15,8 @@ export default function MyParty() {
 
   return (
     <>
-      <div className="overflow-x-auto">
+      <PartyNameHeading />
+      <div className="overflow-x-auto mt-5">
         <table className="table table-lg">
           <thead>
             <tr>
