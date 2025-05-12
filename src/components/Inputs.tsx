@@ -28,11 +28,10 @@ export default function Inputs() {
     level: '',
   });
 
-  // array for collecting form data for each character
-  const stateToPass: CharacterFormData[] = [];
-
   //state variable for form
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  // state variable for characters
+  const [characterData, setCharacterData] = useState<CharacterFormData[]>([]);
 
   // set formData with user input
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -48,18 +47,13 @@ export default function Inputs() {
     e.preventDefault();
     setFormSubmitted(true)
     // TODO: save each formData to an array
-    stateToPass.push(formData)
-    console.log(stateToPass);
-
+    setCharacterData(prev => [...prev, formData]);
   }
 
   // handle click Done and navigate to myparty page
   const handleClickDone = () => {
-    // instantiate Character class with formData
-    const addedCharacter = new Character(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
     // navigate to myparty page and pass state
-    navigate('/my-party', { state: addedCharacter });
-    // TODO: pass all state to myparty as an array.
+    navigate('/my-party', { state: characterData });
   }
 
   //handle add more characters

@@ -1,8 +1,16 @@
 import { useLocation } from "react-router-dom"
 
+interface CharacterFormData {
+  name: string;
+  race: string;
+  characterClass: string;
+  alignment: string;
+  level: string;
+}
+
 export default function MyParty() {
   const location = useLocation();
-  const state = location.state;
+  const characters = location.state as CharacterFormData[] | null || [];
 
   return (
     <>
@@ -19,14 +27,17 @@ export default function MyParty() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th></th>
-              <td>{state.name}</td>
-              <td>{state.race}</td>
-              <td>{state.characterClass}</td>
-              <td>{state.alignment}</td>
-              <td>{state.level}</td>
-            </tr>
+            {characters.map((character, i) => (
+              <tr key={i}>
+                <th></th>
+                <td>{character.name}</td>
+                <td>{character.race}</td>
+                <td>{character.characterClass}</td>
+                <td>{character.alignment}</td>
+                <td>{character.level}</td>
+              </tr>
+
+            ))}
           </tbody>
         </table>
       </div>
