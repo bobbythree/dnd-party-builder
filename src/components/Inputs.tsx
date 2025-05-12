@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DropdownInput from "./DropdownInput";
 import TextInput from "./TextInput";
 import { Character } from "../models/characters/Character";
+import Button from "./Button.tsx"
 
 // define prop types passed to this component
 interface CharacterFormData {
@@ -42,6 +43,18 @@ export default function Inputs() {
   // handle form submit and reset form
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormSubmitted(true)
+  }
+
+  const handleClickDone = () => {
+    // instantiate Character class with formData
+    const addedCharacter = new Character(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
+    // navigate to myparty page and pass state
+    navigate('/my-party', { state: addedCharacter });
+
+  }
+
+  const handleClickAddAnother = () => {
     setFormData({
       name: '',
       race: '',
@@ -49,19 +62,20 @@ export default function Inputs() {
       alignment: '',
       level: '',
     });
-    setFormSubmitted(true)
-    // instantiate Character class with formData
-    // const addedCharacter = new Character(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
-    // navigate to myparty page and pass state
-    // navigate('/my-party', { state: addedCharacter });
+    setFormSubmitted(false);
   }
 
   return (
     <>
-      {formSubmitted ?
-        // TODO: create buttons to add another character or go to myparty
-        (<p>create buttons </p>
-        ) :
+      {formSubmitted ? (
+        <>
+          <h3 className="text-center pb-10 text-2xl">Character Added!</h3>
+          <div className="flex justify-center">
+            <Button btnText="Add another Character" clickHandler={handleClickAddAnother} />
+            <Button btnText="Done" clickHandler={handleClickDone} />
+          </div>
+        </>
+      ) :
         <div className="flex flex-col items-center">
           <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-lg">
             <TextInput
