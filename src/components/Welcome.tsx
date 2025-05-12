@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PartyNameForm from "./PartyNameForm";
-import PartyNameButton from "./PartyNameButton";
+import Button from "./Button";
 
 
 // define types for formData
@@ -47,11 +47,11 @@ export default function Welcome() {
             </span>
           </p>
           <div className="flex justify-center pt-8">
-            <PartyNameButton
+            <Button
               btnText="Go with this name"
               clickHandler={handleConfirmPartyName}
             />
-            <PartyNameButton
+            <Button
               btnText="Pick a new name"
               clickHandler={() => setSubmitForm(false)} //go back to form
             />

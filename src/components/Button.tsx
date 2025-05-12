@@ -4,12 +4,12 @@
 */}
 
 // define prop types
-interface PartyNameButtonProps {
+interface ButtonProps {
   btnText: string;
   clickHandler?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function PartyNameButton({ btnText, clickHandler }: PartyNameButtonProps) {
+export default function PartyNameButton({ btnText, clickHandler }: ButtonProps) {
   return (
     <>
       <button
