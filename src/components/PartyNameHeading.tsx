@@ -1,14 +1,7 @@
-import { useLocation } from "react-router-dom"
-
-// define state types passed from Welcome.tsx
-interface LocationState {
-  partyName: string;
-}
+import { usePartyName } from "../context/PartyNameContext"
 
 export default function PartyNameHeading() {
-  const location = useLocation();
-  const state = location.state as LocationState;
-  const partyName = state?.partyName;
+  const { partyName } = usePartyName();
 
   return (
     <>
