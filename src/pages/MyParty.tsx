@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom"
 import PartyNameHeading from "../components/PartyNameHeading";
-import { usePartyName } from "../context/PartyNameContext";
 
 interface CharacterFormData {
   name: string;
@@ -13,11 +12,9 @@ interface CharacterFormData {
 export default function MyParty() {
   const location = useLocation();
   const characters = location.state as CharacterFormData[] | null || [];
-  const { partyName } = usePartyName();
 
   return (
     <>
-      <h3>{partyName}</h3>
       <PartyNameHeading />
       <div className="overflow-x-auto mt-5">
         <table className="table table-lg">
