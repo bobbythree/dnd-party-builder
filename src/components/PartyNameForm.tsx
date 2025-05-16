@@ -1,24 +1,25 @@
 import { useState, FormEvent, ChangeEvent } from "react"
+import { usePartyName } from "../context/PartyNameContext";
 
-//define prop types
-interface PartyNameFormProps {
-  onSubmitPartyName: (name: string) => void;
-}
 
-export default function PartyNameForm({ onSubmitPartyName }: PartyNameFormProps) {
+export default function PartyNameForm() {
+
+  const { setPartyName } = usePartyName();
+
   // state variables
-  const [partyName, setPartyName] = useState<string>('');
+  const [localPartyName, setLocalPartyName] = useState<string>('');
 
   // set party name with user input
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPartyName(e.target.value);
+    setLocalPartyName(e.target.value);
   }
 
   // form submit handler
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Call the function passed from the parent, sending the partyName up
-    onSubmitPartyName(partyName);
+    setPartyName(localPartyName);
+    setLocalPartyName('');
   }
   return (
     <>
@@ -29,7 +30,7 @@ export default function PartyNameForm({ onSubmitPartyName }: PartyNameFormProps)
           placeholder="Enter a Party name"
           className="input input-xl input-bordered border-primary/35 pl-8"
           onChange={handleInputChange}
-          value={partyName} // Make the input a controlled component
+          value={localPartyName}
         />
         <button type="submit" className="btn bg-primary/20 btn-xl mx-1,">Submit</button>
       </form>

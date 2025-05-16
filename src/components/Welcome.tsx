@@ -1,36 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PartyNameForm from "./PartyNameForm";
-import PartyNameButton from "./PartyNameButton";
+import Button from "./Button";
+import { usePartyName } from "../context/PartyNameContext";
 
 
-// define types for formData
-interface PartyFormData {
-  partyName: string;
-}
+
 
 export default function Welcome() {
   // state variables
   const [submitForm, setSubmitForm] = useState<boolean>(false);
-  const [formData, setFormData] = useState<PartyFormData | null>(null);
 
   // instantiate useNavigate hook
   const navigate = useNavigate();
 
-  // this handler func gets passed to child (PartyNameForm.tsx) when form is submitted
-  const handlePartyNameSubmit = (name: string) => {
-    const submittedData: PartyFormData = {
-      partyName: name,
+  const { partyName, setPartyName } = usePartyName()
+
+  useEffect(() => {
+    if (partyName && partyName.trim() !== '') {
+      setSubmitForm(true);
+    } else {
+      setSubmitForm(false);
     }
-    // set formData with user input
-    setFormData(submittedData);
-    setSubmitForm(true);
-  }
+  }, [partyName]);
 
   //handler for when user confirms party name
   const handleConfirmPartyName = () => {
-    // navigate to add-character page and pass state
-    navigate('./add-character', { state: { partyName: formData?.partyName } })
+    navigate('./add-character');
+  }
+
+  const handlePickNewName = () => {
+    setPartyName('');
   }
 
   return (
@@ -43,23 +43,23 @@ export default function Welcome() {
             Your party's name is:&nbsp;
             <span className=
               "bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text">
-              {formData?.partyName}
+              {partyName}
             </span>
           </p>
           <div className="flex justify-center pt-8">
-            <PartyNameButton
+            <Button
               btnText="Go with this name"
               clickHandler={handleConfirmPartyName}
             />
-            <PartyNameButton
+            <Button
               btnText="Pick a new name"
-              clickHandler={() => setSubmitForm(false)} //go back to form
+              clickHandler={handlePickNewName} //go back to form
             />
           </div>
         </>
         : //else
-        //render form component and pass handler function
-        <PartyNameForm onSubmitPartyName={handlePartyNameSubmit} />
+        //render form component
+        <PartyNameForm />
 
       }
     </>

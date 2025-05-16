@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage.tsx"
 import MainLayout from "./layouts/MainLayout.tsx";
 import AddCharacterPage from "./pages/AddCharacterPage.tsx";
 import MyParty from "./pages/MyParty.tsx"
+import { PartyNameProvider } from "./context/PartyNameContext.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,10 @@ const router = createBrowserRouter(
 )
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <PartyNameProvider>
+      <RouterProvider router={router} />
+    </PartyNameProvider>
+  )
 }
 

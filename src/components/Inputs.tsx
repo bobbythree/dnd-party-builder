@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DropdownInput from "./DropdownInput";
 import TextInput from "./TextInput";
 import { Character } from "../models/characters/Character";
+import Button from "./Button.tsx"
 
 // define prop types passed to this component
 interface CharacterFormData {
@@ -27,6 +28,11 @@ export default function Inputs() {
     level: '',
   });
 
+  //state variable for form
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  // state variable for characters
+  const [characterData, setCharacterData] = useState<CharacterFormData[]>([]);
+
   // set formData with user input
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -36,9 +42,22 @@ export default function Inputs() {
     }));
   }
 
-  // handle form submit and reset form
+  // handle form submit
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormSubmitted(true)
+    // TODO: save each formData to an array
+    setCharacterData(prev => [...prev, formData]);
+  }
+
+  // handle click Done and navigate to myparty page
+  const handleClickDone = () => {
+    // navigate to myparty page and pass state
+    navigate('/my-party', { state: characterData });
+  }
+
+  //handle add more characters
+  const handleClickAddAnother = () => {
     setFormData({
       name: '',
       race: '',
@@ -46,64 +65,74 @@ export default function Inputs() {
       alignment: '',
       level: '',
     });
-    // instantiate Character class with formData
-    const addedCharacter = new Character(formData.name, formData.race, formData.characterClass, formData.alignment, formData.level);
-    // navigate to myparty page and pass state
-    navigate('/my-party', { state: addedCharacter });
+    setFormSubmitted(false);
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-lg">
-        <TextInput
-          name="name"
-          placeholder="Character name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <DropdownInput
-          name="race"
-          options={['Human', 'Elf', 'Half-Elf']}
-          value={formData.race}
-          placeholder="Character Race"
-          onChange={handleChange}
-        />
-        <DropdownInput
-          name="characterClass"
-          options={['Fighter', 'Druid', 'Bard']}
-          value={formData.characterClass}
-          placeholder="Character Class"
-          onChange={handleChange}
-        />
-        <DropdownInput
-          name="alignment"
-          options={
-            [
-              'Lawful Good',
-              'Lawful Neutral',
-              'Lawful Evil',
-              'Neutral Good',
-              'Neutral',
-              'Neutral Evil',
-              'Chaotic Good',
-              'Chaotic Neutral',
-              'Chaotic Evil',
-            ]
-          }
-          value={formData.alignment}
-          placeholder="Character Alignment"
-          onChange={handleChange}
-        />
-        <DropdownInput
-          name="level"
-          options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
-          value={formData.level}
-          placeholder="Character Level"
-          onChange={handleChange}
-        />
-        <button className="btn bg-primary/20 mt-5 w-[30%]" type="submit">Add to Party</button>
-      </form>
-    </div>
+    <>
+      <h3 className="text-center pb-15 text-xl text-primary/60">Add a Character to the Party</h3>
+      {formSubmitted ? (
+        <>
+          <h3 className="text-center pb-10 text-2xl">Character Added!</h3>
+          <div className="flex justify-center">
+            <Button btnText="Add another Character" clickHandler={handleClickAddAnother} />
+            <Button btnText="Done" clickHandler={handleClickDone} />
+          </div>
+        </>
+      ) :
+        <div className="flex flex-col items-center">
+          <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-lg">
+            <TextInput
+              name="name"
+              placeholder="Character name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <DropdownInput
+              name="race"
+              options={['Human', 'Elf', 'Half-Elf']}
+              value={formData.race}
+              placeholder="Character Race"
+              onChange={handleChange}
+            />
+            <DropdownInput
+              name="characterClass"
+              options={['Fighter', 'Druid', 'Bard']}
+              value={formData.characterClass}
+              placeholder="Character Class"
+              onChange={handleChange}
+            />
+            <DropdownInput
+              name="alignment"
+              options={
+                [
+                  'Lawful Good',
+                  'Lawful Neutral',
+                  'Lawful Evil',
+                  'Neutral Good',
+                  'Neutral',
+                  'Neutral Evil',
+                  'Chaotic Good',
+                  'Chaotic Neutral',
+                  'Chaotic Evil',
+                ]
+              }
+              value={formData.alignment}
+              placeholder="Character Alignment"
+              onChange={handleChange}
+            />
+            <DropdownInput
+              name="level"
+              options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
+              value={formData.level}
+              placeholder="Character Level"
+              onChange={handleChange}
+            />
+            <button className="btn bg-primary/20 mt-5 w-[30%]" type="submit">Add to Party</button>
+          </form>
+        </div>
+      }
+    </>
   )
 }
 
