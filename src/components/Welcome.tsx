@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PartyNameForm from "./PartyNameForm";
 import Button from "./Button";
-import { usePartyName } from "../context/PartyNameContext";
+import { useParty } from "../context/PartyContext";
 
 
 
@@ -20,7 +20,7 @@ export default function Welcome() {
   // instantiate useNavigate hook
   const navigate = useNavigate();
 
-  const { partyName, setPartyName } = usePartyName()
+  const { partyName, setPartyName } = useParty()
 
   useEffect(() => {
     if (partyName && partyName.trim() !== '') {

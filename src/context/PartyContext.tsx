@@ -28,7 +28,7 @@ export const PartyProvider = ({ children }: PartyProviderProps) => {
 }
 
 // custom hook
-export const usePartyName = () => {
+export const useParty = () => {
   const context = useContext(PartyContext);
   if (context === undefined) {
     throw new Error('useParty hook must be used within a PartyProvider')

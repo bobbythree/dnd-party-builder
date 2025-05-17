@@ -9,7 +9,7 @@ import HomePage from "./pages/HomePage.tsx"
 import MainLayout from "./layouts/MainLayout.tsx";
 import AddCharacterPage from "./pages/AddCharacterPage.tsx";
 import MyParty from "./pages/MyParty.tsx"
-import { PartyProvider } from "./context/PartyNameContext.tsx";
+import { PartyProvider } from "./context/PartyContext.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

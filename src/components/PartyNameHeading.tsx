@@ -1,9 +1,9 @@
 {/* This component displays the PartyName that was entered into the PartyNameForm*/ }
 
-import { usePartyName } from "../context/PartyNameContext"
+import { useParty } from "../context/PartyContext"
 
 export default function PartyNameHeading() {
-  const { partyName } = usePartyName();
+  const { partyName } = useParty();
 
   return (
     <>
