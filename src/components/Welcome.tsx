@@ -1,3 +1,9 @@
+/* This component is rendered to the HomePage. 
+ * It displays the partyNameForm for user to input a party name.
+ * Once submitted, displays options to confirm name or pick a new name.
+ * Upon confirming name - navigate to add-character page.
+ * */
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PartyNameForm from "./PartyNameForm";
@@ -24,11 +30,12 @@ export default function Welcome() {
     }
   }, [partyName]);
 
-  //handler for when user confirms party name
+  //handler for 'go with this name' btn
   const handleConfirmPartyName = () => {
     navigate('./add-character');
   }
 
+  //handler for 'pick a new name' btn
   const handlePickNewName = () => {
     setPartyName('');
   }

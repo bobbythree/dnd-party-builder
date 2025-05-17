@@ -1,15 +1,17 @@
+/* custom form component for user to input a party name. Currently used in Welcome.tsx */
+
 import { useState, FormEvent, ChangeEvent } from "react"
 import { usePartyName } from "../context/PartyNameContext";
 
-
 export default function PartyNameForm() {
 
+  // assign custom usePartyName hook
   const { setPartyName } = usePartyName();
 
   // state variables
   const [localPartyName, setLocalPartyName] = useState<string>('');
 
-  // set party name with user input
+  // set local party name with user input
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLocalPartyName(e.target.value);
   }
@@ -17,9 +19,8 @@ export default function PartyNameForm() {
   // form submit handler
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Call the function passed from the parent, sending the partyName up
-    setPartyName(localPartyName);
-    setLocalPartyName('');
+    setPartyName(localPartyName); // save local party name state to custom hook
+    setLocalPartyName(''); //clear the input
   }
   return (
     <>

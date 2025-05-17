@@ -1,8 +1,9 @@
+/* This component renders a form with custom TextInput and DropdownInput components. Currently used in add-character page. */
+
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import DropdownInput from "./DropdownInput";
 import TextInput from "./TextInput";
-import { Character } from "../models/characters/Character";
 import Button from "./Button.tsx"
 
 // define prop types passed to this component
@@ -46,17 +47,16 @@ export default function Inputs() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormSubmitted(true)
-    // TODO: save each formData to an array
     setCharacterData(prev => [...prev, formData]);
   }
 
-  // handle click Done and navigate to myparty page
+  // handle 'Done' btn click and navigate to my-party page
   const handleClickDone = () => {
     // navigate to myparty page and pass state
     navigate('/my-party', { state: characterData });
   }
 
-  //handle add more characters
+  //handle 'add more characters' btn
   const handleClickAddAnother = () => {
     setFormData({
       name: '',

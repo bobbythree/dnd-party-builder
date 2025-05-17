@@ -14,7 +14,6 @@ interface PartyNameProviderProps {
   children: ReactNode;
 }
 
-// main func
 export const PartyNameProvider = ({ children }: PartyNameProviderProps) => {
   const [partyName, setPartyName] = useState<string>('');
   const contextValue: PartyNameContextTypes = {

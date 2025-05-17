@@ -1,3 +1,5 @@
+/* This component is a custom select input, currently used in Inputs.tsx */
+
 import { ChangeEvent } from "react";
 
 // define prop types
