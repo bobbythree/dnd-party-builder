@@ -1,37 +1,37 @@
 import { useState, createContext, useContext, ReactNode } from "react";
 
 // shape of context value
-interface PartyNameContextTypes {
+interface PartyContextTypes {
   partyName: string;
   setPartyName: (name: string) => void;
 }
 
 // create context with initial value
-const PartyNameContext = createContext<PartyNameContextTypes | undefined>(undefined);
+const PartyContext = createContext<PartyContextTypes | undefined>(undefined);
 
 // create provider
-interface PartyNameProviderProps {
+interface PartyProviderProps {
   children: ReactNode;
 }
 
-export const PartyNameProvider = ({ children }: PartyNameProviderProps) => {
+export const PartyProvider = ({ children }: PartyProviderProps) => {
   const [partyName, setPartyName] = useState<string>('');
-  const contextValue: PartyNameContextTypes = {
+  const contextValue: PartyContextTypes = {
     partyName, setPartyName,
   }
 
   return (
-    <PartyNameContext.Provider value={contextValue}>
+    <PartyContext.Provider value={contextValue}>
       {children}
-    </PartyNameContext.Provider>
+    </PartyContext.Provider>
   )
 }
 
 // custom hook
 export const usePartyName = () => {
-  const context = useContext(PartyNameContext);
+  const context = useContext(PartyContext);
   if (context === undefined) {
-    throw new Error('usePartyName must be used within a PartyNameProvider')
+    throw new Error('useParty hook must be used within a PartyProvider')
   }
   return context;
 }
