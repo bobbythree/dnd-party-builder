@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PartyNameForm from "./PartyNameForm";
 import Button from "./Button";
-import { usePartyName } from "../context/PartyNameContext";
+import { useParty } from "../context/PartyContext";
 
 
 
@@ -20,15 +20,16 @@ export default function Welcome() {
   // instantiate useNavigate hook
   const navigate = useNavigate();
 
-  const { partyName, setPartyName } = usePartyName()
+  // assign pustom hook
+  const { party, setName } = useParty()
 
   useEffect(() => {
-    if (partyName && partyName.trim() !== '') {
+    if (party.name && party.name.trim() !== '') {
       setSubmitForm(true);
     } else {
       setSubmitForm(false);
     }
-  }, [partyName]);
+  }, [party.name]);
 
   //handler for 'go with this name' btn
   const handleConfirmPartyName = () => {
@@ -37,7 +38,7 @@ export default function Welcome() {
 
   //handler for 'pick a new name' btn
   const handlePickNewName = () => {
-    setPartyName('');
+    setName('');
   }
 
   return (
@@ -50,7 +51,7 @@ export default function Welcome() {
             Your party's name is:&nbsp;
             <span className=
               "bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text">
-              {partyName}
+              {party.name}
             </span>
           </p>
           <div className="flex justify-center pt-8">

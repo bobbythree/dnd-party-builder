@@ -1,12 +1,12 @@
 /* custom form component for user to input a party name. Currently used in Welcome.tsx */
 
 import { useState, FormEvent, ChangeEvent } from "react"
-import { usePartyName } from "../context/PartyNameContext";
+import { useParty } from "../context/PartyContext";
 
 export default function PartyNameForm() {
 
   // assign custom usePartyName hook
-  const { setPartyName } = usePartyName();
+  const { setName } = useParty();
 
   // state variables
   const [localPartyName, setLocalPartyName] = useState<string>('');
@@ -19,7 +19,7 @@ export default function PartyNameForm() {
   // form submit handler
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setPartyName(localPartyName); // save local party name state to custom hook
+    setName(localPartyName);
     setLocalPartyName(''); //clear the input
   }
   return (
@@ -33,7 +33,7 @@ export default function PartyNameForm() {
           onChange={handleInputChange}
           value={localPartyName}
         />
-        <button type="submit" className="btn bg-primary/20 btn-xl mx-1,">Submit</button>
+        <button type="submit" className="btn bg-primary/20 btn-xl mx-1," disabled={localPartyName.trim() === ''}>Submit</button>
       </form>
     </>
   )

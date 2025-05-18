@@ -1,17 +1,9 @@
-import { useLocation } from "react-router-dom"
 import PartyNameHeading from "../components/PartyNameHeading";
-
-interface CharacterFormData {
-  name: string;
-  race: string;
-  characterClass: string;
-  alignment: string;
-  level: string;
-}
+import { useParty } from "../context/PartyContext";
 
 export default function MyParty() {
-  const location = useLocation();
-  const characters = location.state as CharacterFormData[] | null || [];
+
+  const { party } = useParty();
 
   return (
     <>
@@ -29,7 +21,7 @@ export default function MyParty() {
             </tr>
           </thead>
           <tbody>
-            {characters.map((character, i) => (
+            {party.members.map((character, i) => (
               <tr key={i}>
                 <th></th>
                 <td>{character.name}</td>

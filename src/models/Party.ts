@@ -1,10 +1,13 @@
 import { Character } from './characters/Character.ts'
 
-class Party {
-  name: string;
+export class Party {
+  name: string = '';
   members: Character[] = [];
 
-  constructor(name: string) {
+  constructor() {
+
+  }
+  setName(name: string) {
     this.name = name;
   }
   addMember(member: Character) {
