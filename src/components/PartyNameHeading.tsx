@@ -3,14 +3,14 @@
 import { useParty } from "../context/PartyContext"
 
 export default function PartyNameHeading() {
-  const { partyName } = useParty();
+  const { party } = useParty();
 
   return (
     <>
       <h1 className="
         bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text
         text-center pb-5 text-5xl mt-[22vh]
-        ">{partyName || 'Your Party'}
+        ">{party.name || 'Your Party'}
       </h1>
     </>
   )
