@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li><Link to='/'>Home</Link></li>
-          <li><Link to='/add-character' >My Parties</Link></li>
+          <li><Link to='/my-party' >My Party</Link></li>
         </ul>
       </div>
     </div>
