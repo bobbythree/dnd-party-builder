@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import DropdownInput from "./DropdownInput";
 import TextInput from "./TextInput";
 import Button from "./Button.tsx"
+import { useParty } from "../context/PartyContext.tsx";
+import { Character } from "../models/characters/Character.ts";
 
 // define prop types passed to this component
 interface CharacterFormData {
@@ -20,6 +22,9 @@ export default function Inputs() {
   // instantiate useNavigate hook
   const navigate = useNavigate();
 
+  // use useParty hook to get addMember method 
+  const { addMember } = useParty();
+
   // state variable for formData with default values
   const [formData, setFormData] = useState<CharacterFormData>({
     name: '',
@@ -31,8 +36,6 @@ export default function Inputs() {
 
   //state variable for form
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
-  // state variable for characters
-  const [characterData, setCharacterData] = useState<CharacterFormData[]>([]);
 
   // set formData with user input
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -46,14 +49,23 @@ export default function Inputs() {
   // handle form submit
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // create Character instance with formData
+    const newCharacter = new Character(
+      formData.name,
+      formData.race,
+      formData.characterClass,
+      formData.alignment,
+      formData.level,
+    )
+
+    addMember(newCharacter);
     setFormSubmitted(true)
-    setCharacterData(prev => [...prev, formData]);
   }
 
   // handle 'Done' btn click and navigate to my-party page
   const handleClickDone = () => {
     // navigate to myparty page and pass state
-    navigate('/my-party', { state: characterData });
+    navigate('/my-party');
   }
 
   //handle 'add more characters' btn

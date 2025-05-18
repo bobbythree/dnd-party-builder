@@ -34,7 +34,7 @@ export const PartyProvider = ({ children }: PartyProviderProps) => {
     setCounter(prev => prev + 1)
   }, []);
 
-  //create context 
+  //create context values for provider 
   const contextValue = useMemo(() => ({
     party: partyRef.current,
     setName,
