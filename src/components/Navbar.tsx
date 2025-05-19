@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <div className="navbar bg-primary/20 shadow-sm">
       <div className="flex-1">
-        <Link to='/' className="btn btn-ghost text-xl">D&D Party Builder</Link>
+        <Link to='/' className="btn btn-ghost md:text-xl text-md">D&D Party Builder</Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">

@@ -8,8 +8,8 @@ export default function MyParty() {
   return (
     <>
       <PartyNameHeading />
-      <div className="overflow-x-auto mt-5">
-        <table className="table table-lg">
+      <div className="overflow-x-auto mt-5 px-5 flex justify-center">
+        <table className="table md:table-lg table-xs">
           <thead>
             <tr>
               <th></th>
