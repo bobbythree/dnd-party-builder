@@ -13,9 +13,4 @@ export class Party {
   addMember(member: Character) {
     this.members.push(member);
   }
-  getAllMembers() {
-    this.members.forEach(e => {
-      console.log(e);
-    })
-  }
 }
