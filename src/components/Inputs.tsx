@@ -85,7 +85,7 @@ export default function Inputs() {
       <h3 className="text-center pb-15 text-xl text-primary/60">Add a Character to the Party</h3>
       {formSubmitted ? (
         <>
-          <h3 className="text-center pb-10 text-2xl">Character Added!</h3>
+          <h3 className="text-center pb-11 text-2xl">Character Added!</h3>
           <div className="flex justify-center">
             <Button btnText="Add another Character" clickHandler={handleClickAddAnother} />
             <Button btnText="Done" clickHandler={handleClickDone} />
