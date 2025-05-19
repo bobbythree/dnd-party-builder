@@ -48,7 +48,7 @@ export default function Welcome() {
           <p
             className=
             "text-center mt-[30vh] md:text-3xl text-xl">
-            Your party's name is:<br /> <br />
+            Your party's name is:<br className="mb-3" />
             <span className=
               "bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text">
               {party.name}
