@@ -4,9 +4,10 @@ import { Character } from "../models/characters/Character";
 
 // shape of context value
 interface PartyContextTypes {
-  party: Party;
   setName: (name: string) => void;
+  getPartyName: () => void;
   addMember: (member: Character) => void;
+  getPartyMembers: () => Character[];
 }
 
 // create context with initial value
@@ -24,22 +25,32 @@ export const PartyProvider = ({ children }: PartyProviderProps) => {
   //create counter to trigger re-renders
   const [counter, setCounter] = useState(0);
 
+  // methods on the Party object
   const setName = useMemo(() => (name: string) => {
     partyRef.current.setName(name)
     setCounter(prev => prev + 1)
   }, []);
+
+  const getPartyName = useMemo(() => {
+    return () => partyRef.current.name;
+  }, [setCounter]);
 
   const addMember = useMemo(() => (member: Character) => {
     partyRef.current.addMember(member)
     setCounter(prev => prev + 1)
   }, []);
 
+  const getPartyMembers = useMemo(() => {
+    return () => [...partyRef.current.members];
+  }, [setCounter])
+
   //create context values for provider 
   const contextValue = useMemo(() => ({
-    party: partyRef.current,
     setName,
+    getPartyName,
     addMember,
-  }), [counter, setName, addMember]);
+    getPartyMembers,
+  }), [counter, setName, getPartyName, addMember, getPartyMembers,]);
 
   return (
     <PartyContext.Provider value={contextValue}>
