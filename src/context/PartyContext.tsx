@@ -5,7 +5,7 @@ import { Character } from "../models/characters/Character";
 // shape of context value
 interface PartyContextTypes {
   setName: (name: string) => void;
-  getPartyName: () => void;
+  getPartyName: () => string;
   addMember: (member: Character) => void;
   getPartyMembers: () => Character[];
 }
@@ -20,29 +20,29 @@ interface PartyProviderProps {
 
 // create provider component
 export const PartyProvider = ({ children }: PartyProviderProps) => {
-  const partyRef = useRef(new Party())
+  const partyRef = useRef(new Party());
 
   //create counter to trigger re-renders
   const [counter, setCounter] = useState(0);
 
   // methods on the Party object
   const setName = useMemo(() => (name: string) => {
-    partyRef.current.setName(name)
-    setCounter(prev => prev + 1)
+    partyRef.current.setName(name);
+    setCounter(prev => prev + 1);
   }, []);
 
   const getPartyName = useMemo(() => {
     return () => partyRef.current.name;
-  }, [setCounter]);
+  }, [counter]);
 
   const addMember = useMemo(() => (member: Character) => {
-    partyRef.current.addMember(member)
+    partyRef.current.addMember(member);
     setCounter(prev => prev + 1)
   }, []);
 
   const getPartyMembers = useMemo(() => {
     return () => [...partyRef.current.members];
-  }, [setCounter])
+  }, [counter]);
 
   //create context values for provider 
   const contextValue = useMemo(() => ({
@@ -50,7 +50,7 @@ export const PartyProvider = ({ children }: PartyProviderProps) => {
     getPartyName,
     addMember,
     getPartyMembers,
-  }), [counter, setName, getPartyName, addMember, getPartyMembers,]);
+  }), [setName, getPartyName, addMember, getPartyMembers,]);
 
   return (
     <PartyContext.Provider value={contextValue}>
@@ -63,7 +63,7 @@ export const PartyProvider = ({ children }: PartyProviderProps) => {
 export const useParty = () => {
   const context = useContext(PartyContext);
   if (context === undefined) {
-    throw new Error('useParty hook must be used within a PartyProvider')
+    throw new Error('useParty hook must be used within a PartyProvider');
   }
   return context;
 }

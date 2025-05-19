@@ -21,15 +21,16 @@ export default function Welcome() {
   const navigate = useNavigate();
 
   // assign pustom hook
-  const { party, setName } = useParty()
+  const { getPartyName, setName } = useParty();
 
   useEffect(() => {
-    if (party.name && party.name.trim() !== '') {
+    const currentPartyName = getPartyName();
+    if (currentPartyName && currentPartyName.trim() !== '') {
       setSubmitForm(true);
     } else {
       setSubmitForm(false);
     }
-  }, [party.name]);
+  }, [getPartyName]);
 
   //handler for 'go with this name' btn
   const handleConfirmPartyName = () => {
@@ -51,7 +52,7 @@ export default function Welcome() {
             Your party's name is:<br className="mb-3" />
             <span className=
               "bg-linear-to-b from-warning to-red-800 text-transparent bg-clip-text">
-              {party.name}
+              {getPartyName()}
             </span>
           </p>
           <div className="flex justify-center pt-8">

@@ -3,8 +3,8 @@ import { useParty } from "../context/PartyContext";
 
 export default function MyParty() {
 
-  const { party } = useParty();
-
+  const { getPartyMembers } = useParty();
+  const characters = getPartyMembers();
   return (
     <>
       <PartyNameHeading />
@@ -21,7 +21,7 @@ export default function MyParty() {
             </tr>
           </thead>
           <tbody>
-            {party.members.map((character, i) => (
+            {characters.map((character, i) => (
               <tr key={i}>
                 <th></th>
                 <td>{character.name}</td>
