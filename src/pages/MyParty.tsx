@@ -1,5 +1,6 @@
 import PartyNameHeading from "../components/PartyNameHeading";
 import { useParty } from "../context/PartyContext";
+import { FaTrashCan } from "react-icons/fa6";
 
 export default function MyParty() {
 
@@ -35,7 +36,8 @@ export default function MyParty() {
                 <td>{character.alignment}</td>
                 <td>{character.level}</td>
                 <td>
-                  <button className="btn" onClick={() => handleDelete(character.id)}>delete</button>
+                  <button className="btn bg-base-100 border-none" onClick={() => handleDelete(character.id)}><FaTrashCan style={{}} /></button>
+
                 </td>
               </tr>
 
