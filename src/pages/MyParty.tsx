@@ -3,12 +3,17 @@ import { useParty } from "../context/PartyContext";
 
 export default function MyParty() {
 
-  const { getPartyMembers } = useParty();
+  const { getPartyMembers, deleteMember } = useParty();
   const characters = getPartyMembers();
+
+  const handleDelete = (memberId: string) => {
+    deleteMember(memberId)
+  }
+
   return (
     <>
       <PartyNameHeading />
-      <div className="overflow-x-auto mt-5 px-5 flex justify-center">
+      <div className="overflow-x-auto mt-5 px-5 flex justify-center items-center">
         <table className="table md:table-lg table-xs">
           <thead>
             <tr>
@@ -29,6 +34,7 @@ export default function MyParty() {
                 <td>{character.characterClass}</td>
                 <td>{character.alignment}</td>
                 <td>{character.level}</td>
+                <button className="btn" onClick={() => handleDelete(character.id)}>delete</button>
               </tr>
 
             ))}
