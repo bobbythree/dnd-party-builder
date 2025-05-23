@@ -34,7 +34,9 @@ export default function MyParty() {
                 <td>{character.characterClass}</td>
                 <td>{character.alignment}</td>
                 <td>{character.level}</td>
-                <button className="btn" onClick={() => handleDelete(character.id)}>delete</button>
+                <td>
+                  <button className="btn" onClick={() => handleDelete(character.id)}>delete</button>
+                </td>
               </tr>
 
             ))}
