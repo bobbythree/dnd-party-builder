@@ -13,4 +13,7 @@ export class Party {
   addMember(member: Character) {
     this.members.push(member);
   }
+  deleteMember(memberId: string) {
+    this.members = this.members.filter(member => member.id !== memberId);
+  }
 }

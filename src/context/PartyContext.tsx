@@ -7,6 +7,7 @@ interface PartyContextTypes {
   setName: (name: string) => void;
   getPartyName: () => string;
   addMember: (member: Character) => void;
+  deleteMember: (memberId: string) => void;
   getPartyMembers: () => Character[];
 }
 
@@ -40,6 +41,11 @@ export const PartyProvider = ({ children }: PartyProviderProps) => {
     setCounter(prev => prev + 1)
   }, []);
 
+  const deleteMember = useMemo(() => (memberId: string) => {
+    partyRef.current.deleteMember(memberId);
+    setCounter(prev => prev + 1);
+  }, []);
+
   const getPartyMembers = useMemo(() => {
     return () => [...partyRef.current.members];
   }, [counter]);
@@ -49,6 +55,7 @@ export const PartyProvider = ({ children }: PartyProviderProps) => {
     setName,
     getPartyName,
     addMember,
+    deleteMember,
     getPartyMembers,
   }), [setName, getPartyName, addMember, getPartyMembers,]);
 
